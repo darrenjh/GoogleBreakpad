@@ -1,6 +1,3 @@
-//
-// Created by Administrator on 2022/2/22.
-//
 #include <iostream>
 #include <jni.h>
 #include <string>
@@ -12,11 +9,7 @@
 #include "breakpad/src/client/linux/handler/exception_handler.h"
 
 #define TAG "NativeCrash" // 这个是自定义的LOG的标识
-#define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG,TAG ,__VA_ARGS__) // 定义LOGD类型
-#define LOGI(...) __android_log_print(ANDROID_LOG_INFO,TAG ,__VA_ARGS__) // 定义LOGI类型
-#define LOGW(...) __android_log_print(ANDROID_LOG_WARN,TAG ,__VA_ARGS__) // 定义LOGW类型
 #define LOGE(...) __android_log_print(ANDROID_LOG_ERROR,TAG ,__VA_ARGS__) // 定义LOGE类型
-#define LOGF(...) __android_log_print(ANDROID_LOG_FATAL,TAG ,__VA_ARGS__) // 定义LOGF类型
 using namespace std;
 
 // 回调签名：(Ljava/lang/String;)V
@@ -43,17 +36,9 @@ DumpCallback(const google_breakpad::MinidumpDescriptor &descriptor, void *contex
     return false;
 }
 
-void Crash() {
-    volatile int *a = reinterpret_cast<volatile int *>(NULL);
-    *a = 1;
-}
-
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_jiangc_libbreakpad_JniCrashMonitor_init(JNIEnv
-                                                 *env,
-                                                 jobject thiz, jstring
-                                                 path_) {
+Java_com_leyou_plugin_JniCrashMonitor_init(JNIEnv *env, jobject, jstring path_) {
     const char *path = env->GetStringUTFChars(path_, nullptr);
     filePath = path;
     google_breakpad::MinidumpDescriptor descriptor(path);
@@ -67,10 +52,7 @@ Java_com_jiangc_libbreakpad_JniCrashMonitor_init(JNIEnv
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_jiangc_libbreakpad_JniCrashMonitor_testNativeCrash(JNIEnv
-                                                            *env,
-                                                            jobject thiz
-) {
-    Crash();
-
+Java_com_leyou_plugin_JniCrashMonitor_testNative(JNIEnv *env, jobject) {
+    LOGE("执行了abort()");
+    abort();
 }

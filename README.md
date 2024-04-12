@@ -43,8 +43,8 @@ public class MyApplication extends Application {
 2022-08-28 18:41:14.486 7738-7738/com.jiangc.breakpad E/AndroidRuntime: FATAL EXCEPTION: main
     Process: com.jiangc.breakpad, PID: 7738
     java.lang.ArithmeticException: divide by zero
-        at com.jiangc.libbreakpad.CrashManager.testJavaCrash(CrashManager.java:67)
-        at com.jiangc.breakpad.MainActivity$1.onClick(MainActivity.java:20)
+        at com.leyou.plugin.CrashManager.testJavaCrash(CrashManager.java:67)
+        at comm.leyou.demo.MainActivity$1.onClick(MainActivity.java:20)
         at android.view.View.performClick(View.java:7506)
         at com.google.android.material.button.MaterialButton.performClick(MaterialButton.java:1119)
         at android.view.View.performClickInternal(View.java:7483)
@@ -102,8 +102,8 @@ void Crash() {
 ```java 
 main   // 所在线程
 java.lang.ArithmeticException: divide by zero    // 崩溃的原因
-	at com.jiangc.libbreakpad.CrashManager.testJavaCrash(CrashManager.java:67)// 崩溃的地方
-	at com.jiangc.breakpad.MainActivity$1.onClick(MainActivity.java:20)       // 调用的地方
+	at com.leyou.plugin.CrashManager.testJavaCrash(CrashManager.java:67)// 崩溃的地方
+	at comm.leyou.demo.MainActivity$1.onClick(MainActivity.java:20)       // 调用的地方
 	at android.view.View.performClick(View.java:7506)
 	at com.google.android.material.button.MaterialButton.performClick(MaterialButton.java:1119)
 	at android.view.View.performClickInternal(View.java:7483)
@@ -152,8 +152,8 @@ MainActivity.java   Java 崩溃日志是在  20行，调用了上图中的方法
 2022-08-28 19:06:41.470 9338-9338/? E/AndroidRuntime: FATAL EXCEPTION: main
     Process: com.jiangc.breakpad, PID: 9338
     java.lang.ArithmeticException: divide by zero
-        at com.jiangc.libbreakpad.CrashManager.testJavaCrash(Unknown Source:2)
-        at com.jiangc.breakpad.MainActivity$a.onClick(Unknown Source:4)
+        at com.leyou.plugin.CrashManager.testJavaCrash(Unknown Source:2)
+        at comm.leyou.demo.MainActivity$a.onClick(Unknown Source:4)
         at android.view.View.performClick(View.java:7506)
         at com.google.android.material.button.MaterialButton.performClick(MaterialButton.java:2)
         at android.view.View.performClickInternal(View.java:7483)
